@@ -1,0 +1,6 @@
+#!/bin/bash
+
+THIS_DIR=$PWD
+cd ~
+ln -s ${THIS_DIR}/.vimrc
+ln -s ${THIS_DIR}/.vim
