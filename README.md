@@ -1,7 +1,7 @@
 Installation
 ============
 
-`git clone git@github.com:jaredmcateer/vc.git`
+`git clone git@github.com:aspittal/vc.git`
 
 `cd vc`
 
