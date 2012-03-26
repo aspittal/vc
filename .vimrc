@@ -18,10 +18,12 @@ Bundle 'git://github.com/tpope/vim-fugitive.git'
 Bundle 'git://github.com/tpope/vim-surround.git'
 Bundle 'git://github.com/guns/xterm-color-table.vim.git'
 Bundle 'git://github.com/hallettj/jslint.vim.git'
+Bundle 'git://github.com/wincent/Command-T.git'
 
 filetype plugin indent on
 
 " Color Scheme
+set t_Co=256
 set background=dark
 colorscheme ir_black
 
@@ -31,11 +33,17 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/tmp//
 
 " UI
+set title           " Change the terminal's title
 set nu              " Line Numbers On
-set nowrap          " Turn off wrapping
+set wrap            " Turn on wrapping
 set laststatus=2    " Always show status line
 set cmdheight=2     " Set command line height
 set encoding=utf-8  " Set font encoding
+" Highlighting on diff
+highlight DiffAdd cterm=none ctermfg=gray ctermbg=darkblue
+highlight DiffDelete cterm=none ctermfg=gray ctermbg=cyan
+highlight DiffChange cterm=none ctermfg=green ctermbg=black
+highlight DiffText cterm=none ctermfg=green ctermbg=darkblue
 
 " Behaviours
 syntax enable       " Enable syntax highlighting
@@ -48,6 +56,13 @@ set autowrite       " Writes on make/shell commands
 set timeoutlen=350  " Time to wait for a command (after leader forexample)
 set foldlevelstart=99   " Remove folds by default
 set formatoptions=crql  " See fo-table for details
+set shiftround      " round indent to multiple of 'shiftwidth' for > and < commands
+" Don't skip over wrapped lines
+nnoremap j gj       
+nnoremap k gk
+
+" Clears Search
+nmap <silent> // :nohlsearch<CR>    
 
 " Text format
 set tabstop=4       " Make tabs 4 spaces
@@ -111,14 +126,9 @@ nmap <silent> <leader>hs :split<CR>
 nmap <silent> <leader>vs :vsplit<CR>
 nmap <silent> <leader>sc :close<CR>
 
-" Tab Movement
-nmap <silent> <leader>g :tabprev<cr>
-nmap <silent> <leader>s :tabnext<cr>
-
-" Tabbing
-nmap <silent> <C-c> :q<cr>
-nmap <C-t> :tabnew<cr>:e 
-
+" Tab maps
+map tn :tabnext<CR>
+map tp :tabprevious<CR>
 
 " Auto Commands
 if has ("autocmd")
@@ -138,3 +148,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 nmap <Leader>bi :BundleInstall<CR>
 nmap <leader>bu :BundleInstall!<cr>
 nmap <Leader>bc :BundleClean<cr>
+
+" Command-T
+" Make command-t show best match at bottom of screen
+let g:CommandTMatchWindowReverse=1
+" Let Control+X cancel the search
+let g:CommandTCancelMap='<C-c>'
+" Don't let it take up all of my screen
+let g:CommandTMaxHeight=20
+
