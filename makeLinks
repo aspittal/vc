@@ -4,3 +4,8 @@ THIS_DIR=$PWD
 cd ~
 ln -s ${THIS_DIR}/.vimrc
 ln -s ${THIS_DIR}/.vim
+
+cd ${THIS_DIR}/vim/
+mkdir bundle
+cd bundle
+git clone git@github.com/gmarik/vundle.git
