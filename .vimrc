@@ -8,7 +8,7 @@ call vundle#rc()
 
 Bundle 'git://github.com/gmarik/vundle.git'
 
-" Bundle 'git://github.com/Lokaltog/vim-powerline.git'
+Bundle 'git://github.com/Lokaltog/vim-powerline.git'
 Bundle 'git://github.com/scrooloose/nerdtree.git'
 Bundle 'git://github.com/scrooloose/nerdcommenter.git'
 Bundle 'git://github.com/msanders/snipmate.vim.git'
